@@ -171,14 +171,72 @@
             //console.writeline(address.getfulladdress());
             //console.writeline(addresscopy.getfulladdress());
 
-            //Creating a shipment using the first constructor
-            Shipment shipment1 = new Shipment("ABC123");
+            //creating a shipment using the first constructor
+            //shipment shipment1 = new shipment("abc123");
+            //shipment1.printshipmentdetails();
+            //creating a shipment using the second constructor
+            //shipment shipment2 = new shipment("xyz789", "electronics", 2, 100, new deliveryaddress("cairo", "tahrir", 5));
+            //shipment2.printshipmentdetails();
+            //shipment shipment3 = new shipment("lmn456", "books", 3, 75, new deliveryaddress("alexandria", "corniche", 15));
+            //shipment3.printshipmentdetails();
+
+            //Input for shipments taken from the user
+            //Using constructor 1
+            Console.WriteLine("Enter Shipment 1 Data:");
+            Console.WriteLine("Tracking Code:");
+            string trackingCode1 = Console.ReadLine();
+            Shipment shipment1 = new Shipment(trackingCode1);
+            //Using constructor 2
+            Console.WriteLine("Enter Shipment 2 Data:");
+            Console.WriteLine("Tracking Code:");
+            string trackingCode2 = Console.ReadLine();
+            Console.WriteLine("Description:");
+            string description2 = Console.ReadLine();
+            Console.WriteLine("Weight:");
+            int weight2 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Delivery Fee:");
+            decimal deliveryFee2 = decimal.Parse(Console.ReadLine());
+            Console.WriteLine("Destination Address:");
+            Console.WriteLine("City:");
+            string city2 = Console.ReadLine();
+            Console.WriteLine("Street:");
+            string street2 = Console.ReadLine();
+            Console.WriteLine("Building Number:");
+            int buildingNumber2 = int.Parse(Console.ReadLine());
+            Shipment shipment2 = new Shipment(trackingCode2, description2, weight2, deliveryFee2, new DeliveryAddress(city2, street2, buildingNumber2));
+            shipment2.SetTrackingCode(trackingCode2);
+            shipment2.SetDescription(description2);
+            shipment2.SetWeight(weight2);
+            shipment2.SetDeliveryFee(deliveryFee2);
+            //Using constructor 3
+            Console.WriteLine("Enter Shipment 3 Data:");
+            Console.WriteLine("Tracking Code:");
+            string trackingCode3 = Console.ReadLine();
+            Console.WriteLine("Description:");
+            string description3 = Console.ReadLine();
+            Console.WriteLine("Weight:");
+            int weight3 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Delivery Fee:");
+            decimal deliveryFee3 = decimal.Parse(Console.ReadLine());
+            Console.WriteLine("Destination Address:");
+            Console.WriteLine("City:");
+            string city3 = Console.ReadLine();
+            Console.WriteLine("Street:");
+            string street3 = Console.ReadLine();
+            Console.WriteLine("Building Number:");
+            int buildingNumber3 = int.Parse(Console.ReadLine());
+            Shipment shipment3 = new Shipment(trackingCode3, description3, weight3, deliveryFee3, new DeliveryAddress(city3, street3, buildingNumber3));
+            shipment3.SetTrackingCode(trackingCode3);
+            shipment3.SetDescription(description3);
+            shipment3.SetWeight(weight3);
+            shipment3.SetDeliveryFee(deliveryFee3);
+            //Print Shipment Details
+
             shipment1.PrintShipmentDetails();
-            //Creating a shipment using the second constructor
-            Shipment shipment2 = new Shipment("XYZ789", "Electronics", 2, 100, new DeliveryAddress("Cairo", "Tahrir", 5));
             shipment2.PrintShipmentDetails();
-            Shipment shipment3 = new Shipment("LMN456", "Books", 3, 75, new DeliveryAddress("Alexandria", "Corniche", 15));
             shipment3.PrintShipmentDetails();
+
+
 
 
 
