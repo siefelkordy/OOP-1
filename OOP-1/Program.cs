@@ -31,10 +31,112 @@
             {
                 return $"{Street} {BuildingNumber}, {City}";
             }
-
+        }
+        public struct Shipment
+        {
+            string TrackingCode;
+            string Description;
+            int Weight;
+            decimal DeliveryFee;
+            public string Destination(DeliveryAddress address)
+            {
+                return address.GetFullAddress();
+            }
+            //Constructor 1
+            public Shipment(string trackingcode)
+            {
+                TrackingCode = trackingcode;
+                Description = "Unknown";
+                Weight = 1;
+                DeliveryFee = 50;
+                Destination(new DeliveryAddress("Nasr city", "Mostafa El Nahhas", 10));//Default address
+            }
+            //Constructor 2
+            public Shipment(string trackingcode, string description, int weight, decimal deliveryfee, DeliveryAddress destination)
+            {
+                TrackingCode = trackingcode;
+                Description = description;
+                Weight = weight;
+                DeliveryFee = deliveryfee;
+                Destination(destination);
+            }
+            //Tracking code property
+            ////////////////////////
+            //Tracking code Setter
+            public void SetTrackingCode(string trackingcode)
+            {
+                if(trackingcode == null || trackingcode == "")
+                {
+                    throw new ArgumentException("Tracking code cannot be null or empty.");
+                }
+                TrackingCode = trackingcode;
+            }
+            //Tracking code Getter
+            public string GetTrackingCode()
+            {
+                return TrackingCode;
+            }
+            ////////////////////////
+            //Description property
+            ////////////////////////
+            //Description Setter
+            public void SetDescription(string description)
+            {
+                if (description == null || description == "")
+                {
+                    throw new ArgumentException("Description cannot be null or empty.");
+                }
+                Description = description;
+            }
+            //Description Getter
+            public string GetDescription()
+            {
+                return Description;
+            }
+            ///////////////////////
+            //Weight property
+            ///////////////////////
+            //Weight Setter
+            public void SetWeight(int weight)
+            {
+                if (weight <= 0)
+                {
+                    throw new ArgumentException("Weight must be greater than zero.");
+                }
+                Weight = weight;
+            }
+            //Weight Getter
+            public int GetWeight()
+            {
+                return Weight;
+            }
+            ///////////////////////
+            //DeliveryFee property
+            //////////////////////
+            //DeliveryFee Setter
+            public void SetDeliveryFee(decimal deliveryfee)
+            {
+                if (deliveryfee < 0)
+                {
+                    throw new ArgumentException("Delivery fee cannot be negative.");
+                }
+                DeliveryFee = deliveryfee;
+            }
+            //DeliveryFee Getter
+            public decimal GetDeliveryFee()
+            {
+                return DeliveryFee;
+            }
+            ////////////////////////
+            //EstimatedCost property
+            ////////////////////////
+            //EstimatedCost Getter
+            public decimal GetEstimatedCost()
+            {
+                return DeliveryFee + (Weight * 5);
+            }
 
         }
-
 
         static void Main(string[] args)
         {
