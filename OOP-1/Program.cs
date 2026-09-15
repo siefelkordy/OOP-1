@@ -38,8 +38,11 @@
             string Description;
             int Weight;
             decimal DeliveryFee;
+
+            DeliveryAddress destination;
             public string Destination(DeliveryAddress address)
             {
+                destination = address;
                 return address.GetFullAddress();
             }
             //Constructor 1
@@ -135,16 +138,51 @@
             {
                 return DeliveryFee + (Weight * 5);
             }
+            //Update Delivery Fee method
+            public void UpdateDeliveryFee(decimal newDeliveryFee)
+            {
+                if (newDeliveryFee < 0)
+                {
+                    throw new ArgumentException("Delivery fee cannot be negative.");
+                }
+                DeliveryFee = newDeliveryFee;
+            }
+            //Print Shipment Details method
+            public void PrintShipmentDetails()
+            {
+                Console.WriteLine("////////////////////////////////\nShipment Details:");
+                Console.WriteLine($"Tracking Code: {TrackingCode}");
+                Console.WriteLine($"Description: {Description}");
+                Console.WriteLine($"Weight: {Weight} kg");
+                Console.WriteLine($"Delivery Fee: ${DeliveryFee}");
+                Console.WriteLine($"Destination: {destination.GetFullAddress()}");
+                Console.WriteLine($"Estimated Cost: ${GetEstimatedCost()}");
+                Console.WriteLine("----------------------------------\n");
+                
+            }
 
         }
 
         static void Main(string[] args)
         {
-            DeliveryAddress address = new DeliveryAddress("Nasr city", "Mostafa Al Nahhas", 10);
-            DeliveryAddress addressCopy = address; //a copy of the struct
-            addressCopy = new DeliveryAddress("Giza", "Tahrir", 5); //modifying the copy
-            Console.WriteLine(address.GetFullAddress());
-            Console.WriteLine(addressCopy.GetFullAddress());
+            //deliveryaddress address = new deliveryaddress("nasr city", "mostafa al nahhas", 10);
+            //deliveryaddress addresscopy = address; //a copy of the struct
+            //addresscopy = new deliveryaddress("giza", "tahrir", 5); //modifying the copy
+            //console.writeline(address.getfulladdress());
+            //console.writeline(addresscopy.getfulladdress());
+
+            //Creating a shipment using the first constructor
+            Shipment shipment1 = new Shipment("ABC123");
+            shipment1.PrintShipmentDetails();
+            //Creating a shipment using the second constructor
+            Shipment shipment2 = new Shipment("XYZ789", "Electronics", 2, 100, new DeliveryAddress("Cairo", "Tahrir", 5));
+            shipment2.PrintShipmentDetails();
+            Shipment shipment3 = new Shipment("LMN456", "Books", 3, 75, new DeliveryAddress("Alexandria", "Corniche", 15));
+            shipment3.PrintShipmentDetails();
+
+
+
+
         }
     }
 }
