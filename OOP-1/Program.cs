@@ -10,9 +10,39 @@
         //2. No maintainability without encapsulation
         //3. No data validation without encapsulation
         //Q2b) Private fields are used to encapsulate the data and protect it from being accessed or modified directly from outside the struct
+
+        //Part 02 : Practical Questions//
+        //1.
+
+        public struct DeliveryAddress
+        {
+            string City;
+            string Street;
+            int BuildingNumber;
+
+            public DeliveryAddress(string city, string street, int buildingNumber)
+            {
+                City = city;
+                Street = street;
+                BuildingNumber = buildingNumber;
+            }
+
+            public string GetFullAddress()
+            {
+                return $"{Street} {BuildingNumber}, {City}";
+            }
+
+
+        }
+
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            DeliveryAddress address = new DeliveryAddress("Nasr city", "Mostafa Al Nahhas", 10);
+            DeliveryAddress addressCopy = address; //a copy of the struct
+            addressCopy = new DeliveryAddress("Giza", "Tahrir", 5); //modifying the copy
+            Console.WriteLine(address.GetFullAddress());
+            Console.WriteLine(addressCopy.GetFullAddress());
         }
     }
 }
